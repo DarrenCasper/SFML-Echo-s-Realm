@@ -8,7 +8,7 @@ Player::Player()
     texture.loadFromFile("img/AnimationSheet_Character.png");
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, frameWidth, frameHeight));
-    sprite.setPosition(100.f, 200.f);
+    sprite.setPosition(100.f, 700.f);
     sprite.setOrigin(frameWidth / 2.f, 0);
     sprite.setScale(1.7f, 1.7f);
 }
@@ -49,6 +49,24 @@ void Player::update(float deltaTime) {
 
     sprite.move(velocity * deltaTime);
 }
+void Player::checkObstacleCollision(const std::vector<RealmObstacle*>& obstacles) {
+    for (auto obs : obstacles) {
+        if (!obs->isBlocking()) continue;
+
+        if (sprite.getGlobalBounds().intersects(obs->getBounds())) {
+            if (velocity.x > 0) {
+                // Coming from the left → push to the left side of obstacle
+                sprite.setPosition(obs->getBounds().left - sprite.getGlobalBounds().width, sprite.getPosition().y);
+            }
+            if (velocity.x < 0) {
+                // Coming from the right → push to the right side of obstacle (dumb solution cuz of scaling)
+                sprite.setPosition(obs->getBounds().left + 40.0f + obs->getBounds().width, sprite.getPosition().y);
+            }
+            velocity.x = 0;
+        }
+    }
+}
+
 
 void Player::checkCollision(const std::vector<Platform*>& platforms) {
     for (const auto& plat : platforms) {

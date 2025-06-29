@@ -5,6 +5,7 @@
 #include "DisappearPlatform.hpp"
 #include "Realm.hpp"
 #include "player.hpp"
+#include "RealmObstacle.hpp"
 
 Game_State::Game_State()
     : currentRealm(Realm::Light), rKeyPrev(false), gravity(0.5f)
@@ -59,7 +60,11 @@ Game_State::Game_State()
     realmPlat1.setPosition(1300.f, 500.f);
     platforms.push_back(new RealmPlatform(realmPlat1.getSize(), realmPlat1.getPosition(), realmPlat1.getFillColor(), Realm::Dark));
 
-    
+    // Realm Obstacles
+    obstacles.push_back(new RealmObstacle({50.f, 100.f}, {500.f, 500.f}, Realm::Dark));
+    obstacles.push_back(new RealmObstacle({50.f, 100.f}, {800.f, 250.f}, Realm::Light));
+
+
     view.setSize(1600.f, 900.f);
     view.setCenter(800.f, 450.f); 
 }
@@ -86,6 +91,8 @@ void Game_State::update() {
     player.handleInput();
     player.update(deltaTime);
     player.checkCollision(platforms);
+    player.checkObstacleCollision(obstacles);
+
     
     // std::cout << "Player Position: (" << player.getPosition().x << ", " << player.getPosition().y << ")\n";
     // Debug Line (Previously used on gravity for delta time cuz player keep phasing)
@@ -105,7 +112,6 @@ void Game_State::update() {
 
     for (auto& deco : decorations)
         deco->update(deltaTime);
-
     
 }
 
@@ -144,6 +150,13 @@ void Game_State::render(sf::RenderWindow& window) {
         else if (auto* realmPlat = dynamic_cast<RealmPlatform*>(plat))
             plat->drawGhost(window);
     }
+
+    for (auto& obs : obstacles)
+        obs->setRealm(currentRealm);
+
+    for (auto& obs : obstacles)
+        obs->draw(window);
+
 }
 
 int Game_State::get_next_state() {

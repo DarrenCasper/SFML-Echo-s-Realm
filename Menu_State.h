@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "State.h"
+#include <vector>
+using namespace std;
 
 class Menu_State: public State
 {
@@ -16,24 +18,20 @@ public:
 
 private:
 
-    /*
-     * sf::Text is a drawable object representing a string.
-     *
-     * sf::Text can be drawn to any RenderTarget as long as
-     * a font and a string is supplied.
-     *
-     * It works like a sf::Sprite but represents text instead
-     * of an image.
-     */
-    sf::Text text;
+
+    
+    sf::Text gameTitle;
+    vector<sf::Text> textMenus;
     sf::Font font{};
 
+    sf::Texture textTitleBtn;
+    sf::Text textMenutBtn;
+    sf::Sprite textTitleRender;
 
-    /*
-     * Flag to determine wheter or not the 'enter' key has been
-     * pressed (see Menu_State.cpp for details).
-     */
+
     bool play;
+
+    int activeMenu;
 
 
   

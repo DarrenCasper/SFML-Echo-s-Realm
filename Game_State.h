@@ -8,6 +8,7 @@
 #include "RealmPlatform.hpp"
 #include "Object.hpp"
 #include "Cloud.hpp"
+#include "RealmObstacle.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <list>
@@ -31,6 +32,7 @@ private:
     Realm currentRealm;
     bool rKeyPrev;
     std::vector<Platform*> platforms;
+    std::vector<RealmObstacle*> obstacles;
     std::list<std::unique_ptr<Object>> decorations;
 
     sf::Texture backgroundTexture1, backgroundTexture2, backgroundTexture3, backgroundTexture4;

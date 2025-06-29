@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "platform.hpp"
+#include "RealmObstacle.hpp"
 
 class Player {
 public:
@@ -10,6 +11,7 @@ public:
     void handleInput();
     void applyPhysics(float gravity);
     void checkCollision(const std::vector<Platform*>& platforms);
+    void checkObstacleCollision(const std::vector<RealmObstacle*>& obstacles);
     void update(float deltaTime); 
     void draw(sf::RenderWindow& window);
     sf::FloatRect getBounds() const;

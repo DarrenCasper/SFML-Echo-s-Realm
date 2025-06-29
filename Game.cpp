@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Menu_State.h"
 #include "Game_State.h"
+#include "Splash_State.h"
 
 using namespace sf;
 
@@ -22,10 +23,13 @@ Game :: Game (std::string const & title,
               unsigned            height)
         : window { VideoMode { width, height },
         title, Style::Titlebar | Style::Close },
-                   current_state{ MENU_STATE },
+                   current_state{ SPLASH_STATE },
           running { true }
 {
     // Insert all sates you want in your game in the states map
+    states.insert(std::pair<int,
+            std::unique_ptr<State>>({SPLASH_STATE,
+                                     std::make_unique<Splash_State>()}));
     states.insert(std::pair<int,
             std::unique_ptr<State>>({MENU_STATE,
                                      std::make_unique<Menu_State>()}));
