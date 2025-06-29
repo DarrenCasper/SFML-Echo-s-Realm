@@ -49,3 +49,10 @@ Apa yang ditambahkan:
 1. Menggabungkan GameState, MenuState, dan State lain ke dalam program normal.
 2. Membenarkan gravity yang awalnya dikali dengan deltatime (karena akan akumulasi seiring waktu di menu yang akan membuat phasing)
 3. Sudah berhasil berjalan gamenya jadi tinggal di add fungsi lain yang diinginkan
+
+## Eight Commit:
+Apa yang ditambahkan:
+1. Membuat Splash State dan mengubah logo 
+2. Mengubah Menu state agar memiliki text dan title game yang jelas
+3. Membuat Class RealmObstacle, yang menutup player jika di realm yang salah.
+4. Membenarkan logika collision player dengan realm obstacle karena awalnya scale player yang kurang bagus.
