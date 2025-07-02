@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 Player::Player()
-    : isJumping(false), jumpSpeed(-600.0f),  
+    : isJumping(false), jumpSpeed(-470.0f),  
       currentFrame(0), frameTime(0.1f), timeSinceLastFrame(0.f),
       frameWidth(32), frameHeight(32)
 {

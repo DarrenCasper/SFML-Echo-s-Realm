@@ -12,4 +12,6 @@ public:
     virtual void update(float deltaTime); 
     virtual void draw(sf::RenderWindow &window);
     virtual ~Object() {}
+    sf::FloatRect getBounds() const { return sprite.getGlobalBounds();}
+    void setScale(float x, float y) { sprite.setScale(x, y); }
 };

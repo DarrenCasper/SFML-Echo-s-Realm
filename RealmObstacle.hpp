@@ -14,7 +14,7 @@ public:
     {
         shape.setSize(size);
         shape.setPosition(position);
-        shape.setFillColor(sf::Color::Transparent); // or a semi-transparent color for debugging
+        shape.setFillColor(sf::Color::Red); // or a semi-transparent color for debugging
         shape.setOutlineColor(sf::Color::Red);
         shape.setOutlineThickness(1.f);
     }

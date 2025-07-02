@@ -56,3 +56,10 @@ Apa yang ditambahkan:
 2. Mengubah Menu state agar memiliki text dan title game yang jelas
 3. Membuat Class RealmObstacle, yang menutup player jika di realm yang salah.
 4. Membenarkan logika collision player dengan realm obstacle karena awalnya scale player yang kurang bagus.
+
+## Ninth Commit:
+Apa yang ditambahkan:
+1. Membuat level akhir dan memasang semua platform
+2. Menambahkan object spike dan star yang merupakan suatu kondisi untuk trigger state lain.
+3. mengubah get_next_State di dalam game_state (belum dibuat state akhir yaitu game over state dan you win state)
+4. membenarkan RealmObstacle, dan logic collision handling terhadap spike dan star (sering ngebug ini cuman udah meningan)

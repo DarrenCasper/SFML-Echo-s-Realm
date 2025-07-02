@@ -31,15 +31,28 @@ private:
     Player player;
     Realm currentRealm;
     bool rKeyPrev;
+
+
     std::vector<Platform*> platforms;
     std::vector<RealmObstacle*> obstacles;
     std::list<std::unique_ptr<Object>> decorations;
+    std::list<std::unique_ptr<Object>> goal;
+    std::list<std::unique_ptr<Object>> spikes;
 
     sf::Texture backgroundTexture1, backgroundTexture2, backgroundTexture3, backgroundTexture4;
     sf::Sprite backgroundSprite1, backgroundSprite2, backgroundSprite3, backgroundSprite4;
 
     sf::Clock clock;
     sf::View view;
+
+    bool goalReached = false;
+    sf::Clock goalClock;
+    float goalDelay = 0.1f; 
+
+    bool spikehit = false;
+    sf::Clock spikeClock;
+    float spikeDelay = 0.1f;
+
 
     float gravity;
 };
