@@ -3,6 +3,8 @@
 #include "Menu_State.h"
 #include "Game_State.h"
 #include "Splash_State.h"
+#include "Game_over.h"
+#include "Ending.h"
 
 using namespace sf;
 
@@ -37,6 +39,12 @@ Game :: Game (std::string const & title,
     states.insert(std::pair<int,
                   std::unique_ptr<State>>({GAME_STATE,
                                            std::make_unique<Game_State>()}));
+    states.insert(std::pair<int,
+                  std::unique_ptr<State>>({GAME_OVER_STATE,
+                                           std::make_unique<Game_Over_State>()}));
+    states.insert(std::pair<int,
+                  std::unique_ptr<State>>({ENDING_STATE,
+                                           std::make_unique<Ending_State>()}));
 }
 
 

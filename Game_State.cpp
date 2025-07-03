@@ -105,7 +105,7 @@ Game_State::Game_State()
     // Realm Obstacles
     obstacles.push_back(new RealmObstacle({10.f, 100.f}, {500.f, 500.f}, Realm::Dark));
     obstacles.push_back(new RealmObstacle({10.f, 100.f}, {575.f, 100.f}, Realm::Light));
-    obstacles.push_back(new RealmObstacle({10.f, 200.f}, {1300.f, 100.f}, Realm::Dark));
+    obstacles.push_back(new RealmObstacle({10.f, 200.f}, {1300.f, 0.f}, Realm::Dark));
 
     // Star / End game goal
     goal.emplace_back(std::make_unique<Object>("Icons/Icon_Large_Star.png", sf::Vector2f(1450, 100)));
@@ -230,13 +230,13 @@ int Game_State::get_next_state() {
             goalReached = false; // reset for next time
             return MENU_STATE;
         }
-        return GAME_STATE;
+        return ENDING_STATE;
     }
 
     if(spikehit) {
         if (spikeClock.getElapsedTime().asSeconds() >= spikeDelay) {
             spikehit = false; // reset for next time
-            return MENU_STATE;
+            return GAME_OVER_STATE;
         }
         return GAME_STATE;
     }

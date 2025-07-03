@@ -47,11 +47,11 @@ private:
 
     bool goalReached = false;
     sf::Clock goalClock;
-    float goalDelay = 0.1f; 
+    float goalDelay = 0.3f; 
 
     bool spikehit = false;
     sf::Clock spikeClock;
-    float spikeDelay = 0.1f;
+    float spikeDelay = 0.3f;
 
 
     float gravity;
